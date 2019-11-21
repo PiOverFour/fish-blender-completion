@@ -8,14 +8,7 @@ function __fish_is_blender_player -d "Check if second argument is -a"
 end
 
 complete -c blender -n "not __fish_is_blender_player" -o a -r -d "Instead of showing Blender's user interface, this runs Blender as an animation player,
-to view movies and image sequences rendered in Blender (ignored if '-b' is set)
-Playback Arguments
--p <sx> <sy> Open with lower left corner at <sx>, <sy>.
--m Read from disk (Do not buffer)
--f <fps> <fps-base> Specify FPS to start with.
--j <frame> Set frame step to <frame>.
--s <frame> Play from <frame>.
--e <frame> Play until <frame>"
+to view movies and image sequences rendered in Blender (ignored if '-b' is set)"
 
 complete -c blender -n "__fish_is_blender_player" -o p -x -d "<sx> <sy> Open with lower left corner at <sx>, <sy>"
 complete -c blender -n "__fish_is_blender_player" -o m -d "Read from disk (Do not buffer)"
