@@ -169,3 +169,11 @@ complete -c blender -n "not __fish_is_blender_player" -l debug-freestyle -d "Ena
 complete -c blender -n "not __fish_is_blender_player" -l debug-ghost -d "Enable debug messages for event handling"
 complete -c blender -n "not __fish_is_blender_player" -l verbose -d "Set logging verbosity level for debug messages which supports it"
 complete -c blender -n "not __fish_is_blender_player" -l disable-library-override -d "Enable Library Override features in the UI"
+
+
+# Cycles Options:
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-num-chunks -d "Number of chunks to split sample range into"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-current-chunk -d "Current chunk of samples range to render"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-start-chunk -d "Start chunk to render"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-end-chunk -d "End chunk to render"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-print-stats -d "Print rendering statistics to stderr"
