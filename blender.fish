@@ -7,6 +7,7 @@ function __fish_is_blender_player -d "Check if second argument is -a"
     return 1
 end
 
+# Blender Player Options:
 complete -c blender -n "not __fish_is_blender_player" -o a -r -d "Instead of showing Blender's user interface, this runs Blender as an animation player,
 to view movies and image sequences rendered in Blender (ignored if '-b' is set)"
 
@@ -92,6 +93,7 @@ complete -c blender -n "not __fish_is_blender_player" -l python-text -x -d "Run 
 complete -c blender -n "not __fish_is_blender_player" -l python-expr -x -d "Run the given expression as a Python script"
 complete -c blender -n "not __fish_is_blender_player" -l python-console -d "Run Blender with an interactive console"
 complete -c blender -n "not __fish_is_blender_player" -l python-exit-code -x -d "Set the exit-code in [0..255] to exit if a Python exception is raised (only for scripts executed from the command line), zero disables"
+complete -c blender -n "not __fish_is_blender_player" -l python-use-system-env -d "Allow Python to use system environment variables such as 'PYTHONPATH'"
 complete -c blender -n "not __fish_is_blender_player" -l addons -x -d "Comma separated list of add-ons (no spaces)"
 
 
@@ -164,5 +166,6 @@ complete -c blender -n "not __fish_is_blender_player" -o - -d "End option proces
 
 # Other Options:
 complete -c blender -n "not __fish_is_blender_player" -l debug-freestyle -d "Enable debug messages for Freestyle"
+complete -c blender -n "not __fish_is_blender_player" -l debug-ghost -d "Enable debug messages for event handling"
 complete -c blender -n "not __fish_is_blender_player" -l verbose -d "Set logging verbosity level for debug messages which supports it"
 complete -c blender -n "not __fish_is_blender_player" -l disable-library-override -d "Enable Library Override features in the UI"
