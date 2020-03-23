@@ -172,8 +172,8 @@ complete -c blender -n "not __fish_is_blender_player" -l disable-library-overrid
 
 
 # Cycles Options:
-complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-num-chunks -d "Number of chunks to split sample range into"
-complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-current-chunk -d "Current chunk of samples range to render"
-complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-start-chunk -d "Start chunk to render"
-complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-end-chunk -d "End chunk to render"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-num-chunks -x -d "Number of chunks to split sample range into"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-current-chunk -x -d "Current chunk of samples range to render"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-start-chunk -x -d "Start chunk to render"
+complete -c blender -n "not __fish_is_blender_player" -l cycles-resumable-end-chunk -x -d "End chunk to render"
 complete -c blender -n "not __fish_is_blender_player" -l cycles-print-stats -d "Print rendering statistics to stderr"
