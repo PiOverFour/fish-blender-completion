@@ -11,6 +11,6 @@ I can never remember all the options.
 ```
 
 ## Legal
-Copyright © Damien Picard 2019
+Copyright © Damien Picard 2019-2022
 
 Released under the terms of the GNU General Public License, version 2.
