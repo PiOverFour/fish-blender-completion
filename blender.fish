@@ -1,4 +1,4 @@
-# Blender Player Options:
+# Animation Playback Options:
 complete -c blender -n "not __fish_seen_subcommand_from -a" -o a -r -d "Instead of showing Blender's user interface, this runs Blender as an animation player,
 to view movies and image sequences rendered in Blender (ignored if '-b' is set)"
 
@@ -8,6 +8,8 @@ complete -c blender -n "__fish_seen_subcommand_from -a" -o f -x -d "<fps> <fps-b
 complete -c blender -n "__fish_seen_subcommand_from -a" -o j -x -d "<frame> Set frame step to <frame>"
 complete -c blender -n "__fish_seen_subcommand_from -a" -o s -x -d "<frame> Play from <frame>"
 complete -c blender -n "__fish_seen_subcommand_from -a" -o e -x -d "<frame> Play until <frame>"
+complete -c blender -n "__fish_seen_subcommand_from -a" -o c -x -d "Amount of memory in megabytes to allow for caching images during playback.
+Zero disables (clamping to a fixed number of frames instead)"
 
 
 # Render Options:
@@ -53,13 +55,14 @@ MPEG\tMPEG
 CINEON\tCINEON
 DPX\tDPX
 DDS\tDDS
-JP2\tJP2" -d "Set the render format.
+JP2\tJP2
+WEBP\tWEBP" -d "Set the render format
 
 Valid options are:
 'TGA' 'RAWTGA' 'JPEG' 'IRIS' 'IRIZ' 'AVIRAW' 'AVIJPEG' 'PNG' 'BMP'
 
 Formats that can be compiled into Blender, not available on all systems:
-'HDR' 'TIFF' 'OPEN_EXR' 'OPEN_EXR_MULTILAYER' 'MPEG' 'CINEON' 'DPX' 'DDS' 'JP2'"
+'HDR' 'TIFF' 'OPEN_EXR' 'OPEN_EXR_MULTILAYER' 'MPEG' 'CINEON' 'DPX' 'DDS' 'JP2' 'WEBP'"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -o x -l use-extension -x -a "
 0\tfalse
 1\ttrue" -d "Set option to add the file extension to the end of the file"
@@ -84,8 +87,8 @@ complete -c blender -n "not __fish_seen_subcommand_from -a" -l python-text -x -d
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l python-expr -x -d "Run the given expression as a Python script"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l python-console -d "Run Blender with an interactive console"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l python-exit-code -x -d "Set the exit-code in [0..255] to exit if a Python exception is raised (only for scripts executed from the command line), zero disables"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l python-use-system-env -d "Allow Python to use system environment variables such as 'PYTHONPATH'"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l addons -x -d "Comma separated list of add-ons (no spaces)"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l python-use-system-env -d "Allow Python to use system environment variables such as 'PYTHONPATH' and the user site-packages directory"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l addons -x -d "Comma separated list (no spaces) of add-ons to enable in addition to any default add-ons"
 
 
 # Logging Options:
@@ -102,10 +105,10 @@ complete -c blender -n "not __fish_seen_subcommand_from -a" -l log-file -d "Set 
 
 
 # Debug Options:
-complete -c blender -n "not __fish_seen_subcommand_from -a" -o d -l debug  -d "Turn debugging on
+complete -c blender -n "not __fish_seen_subcommand_from -a" -o d -l debug -d "Turn debugging on
 * Enables memory error detection
 * Disables mouse grab (to interact with a debugger in some cases)
-* Keeps Python's 'sys.stdin' rather than setting it to Non"
+* Keeps Python's 'sys.stdin' rather than setting it to None"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-value -x -d "Set debug value of <value> on startup"
 
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-events -d "Enable debug messages for the event system"
@@ -123,20 +126,26 @@ complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-t
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-no-threads -d "Switch dependency graph to a single threaded evaluation"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-time -d "Enable debug messages from dependency graph related on timing"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-pretty -d "Enable colors for dependency graph debug messages"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-uuid -d "Verify validness of session-wide identifiers assigned to ID datablocks"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-ghost -d "Enable debug messages for Ghost (Linux only)"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-depsgraph-wintab -d "Enable debug messages for Wintab"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-gpu -d "Enable gpu debug context and information for OpenGL 4.3+"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-gpumem -d "Enable GPU memory stats in status bar"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-gpu-shaders -d "Enable GPU memory stats in status bar"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-gpu-force-workarounds -d "Enable GPU memory stats in status bar"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-gpu-force-workarounds -d "Enable workarounds for typical GPU issues and disable all GPU extensions"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-wm -d "Enable debug messages for the window manager, shows all operators in search, shows keymap errors"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-xr -d "Enable debug messages for virtual reality contexts
+Enables the OpenXR API validation layer, (OpenXR) debug messages and general information prints"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-xr-time -d "Enable debug messages for virtual reality frame rendering times"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-all -d "Enable all debug messages"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-io -d "Enable debug messages for I/O (collada, ...)"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-io -d "Enable debug messages for I/O (Collada, ...)"
 
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-fpe -d "Enable floating point exceptions"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-exit-on-error -d "Immediately exit when internal errors are detected"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l disable-crash-handler -d "Disable the crash handler"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l disable-abort-handler -d "Disable the abort handler"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l verbose -x -d "Set the logging verbosity level for debug messages that support it"
 
 
 # Misc Options:
+complete -c blender -n "not __fish_seen_subcommand_from -a" -l open-last -d "Open the most recently opened blend file, instead of the default startup file"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l app-template -x -d "Set the application template (matching the directory name), use 'default' for none"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l factory-startup -d "Skip reading the BLENDER_STARTUP_FILE in the users home directory"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l enable-event-simulate -d "Enable event simulation testing feature 'bpy.types.Window.event_simulate'"
@@ -145,8 +154,10 @@ complete -c blender -n "not __fish_seen_subcommand_from -a" -l env-system-datafi
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l env-system-scripts -d "Set the BLENDER_SYSTEM_SCRIPTS environment variable"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l env-system-python -d "Set the BLENDER_SYSTEM_PYTHON environment variable"
 
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l noaudio -d "Force sound system to None"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l setaudio -x -a "NULL SDL OPENAL JACK" -d "Force sound system to a specific device. 'NULL' 'SDL' 'OPENAL' 'JACK'"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -o noaudio -d "Force sound system to None"
+complete -c blender -n "not __fish_seen_subcommand_from -a" -o setaudio -x -a "None SDL OpenAL CoreAudio JACK PulseAudio WASAPI" -d "Force sound system to a specific device
+'None' 'SDL' 'OpenAL' 'CoreAudio' 'JACK' 'PulseAudio' 'WASAPI' "
+
 
 complete -c blender -n "not __fish_seen_subcommand_from -a" -o h -l help -d "Print this help text and exit"
 complete -c blender -n "not __fish_seen_subcommand_from -a" -o R -d "Register blend-file extension, then exit (Windows only)"
@@ -157,14 +168,3 @@ complete -c blender -n "not __fish_seen_subcommand_from -a" -o - -d "End option 
 
 # Other Options:
 complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-freestyle -d "Enable debug messages for Freestyle"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l debug-ghost -d "Enable debug messages for event handling"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l verbose -d "Set logging verbosity level for debug messages which supports it"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l disable-library-override -d "Enable Library Override features in the UI"
-
-
-# Cycles Options:
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l cycles-resumable-num-chunks -x -d "Number of chunks to split sample range into"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l cycles-resumable-current-chunk -x -d "Current chunk of samples range to render"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l cycles-resumable-start-chunk -x -d "Start chunk to render"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l cycles-resumable-end-chunk -x -d "End chunk to render"
-complete -c blender -n "not __fish_seen_subcommand_from -a" -l cycles-print-stats -d "Print rendering statistics to stderr"
