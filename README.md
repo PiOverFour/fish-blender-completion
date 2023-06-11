@@ -4,8 +4,9 @@ I can never remember all the options.
 
 ## Install
 
+Clone this repository, then:
+
 ```fish
-> git clone https://github.com/pioverfour/fish-blender-completion
 > mkdir -p ~/.config/fish/completions
 > ln -s $PWD/fish-blender-completion/blender.fish ~/.config/fish/completions/
 ```
