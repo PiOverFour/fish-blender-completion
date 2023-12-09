@@ -12,7 +12,7 @@ Clone this repository, then:
 ```
 
 ## Legal
-Copyright © Damien Picard 2019-2022
+Copyright © Damien Picard 2019-2023
 
 Released under the terms of the GNU General Public License as
 published by the Free Software Foundation, either version 2 of the
