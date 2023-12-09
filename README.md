@@ -14,4 +14,6 @@ Clone this repository, then:
 ## Legal
 Copyright © Damien Picard 2019-2022
 
-Released under the terms of the GNU General Public License, version 2.
+Released under the terms of the GNU General Public License as
+published by the Free Software Foundation, either version 2 of the
+License or (at your option) any later version.
