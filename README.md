@@ -2,6 +2,11 @@
 
 I can never remember all the options.
 
+## Deprecated
+
+This repository is obsolete since fish shell version 3.7, as Blender
+completions are now built-in.
+
 ## Install
 
 Clone this repository, then:
